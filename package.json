@@ -14,6 +14,7 @@
     "rc-texty": "^0.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-share": "^4.1.0",
     "react-youtube": "^7.9.0",
     "recharts": "^1.8.5",
     "victory": "^34.1.3"

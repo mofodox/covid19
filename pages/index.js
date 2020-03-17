@@ -1,5 +1,12 @@
 import fetch from 'isomorphic-unfetch'
-// import YouTube from 'react-youtube'
+import { 
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    WhatsappShareButton,
+    WhatsappIcon
+} from 'react-share'
 
 import Layout from '../components/Layout'
 import InfoCard from '../components/InfoCard'
@@ -19,7 +26,6 @@ export default function IndexPage(props) {
         >
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
                 <h1 className="title">Covid-19 Global Cases 🌍</h1>
-                {/* <div id="circle"></div> */}
                 <p id="time--status">{`Last updated on ${dateAllString}`}</p>
             </div>
 
@@ -69,31 +75,48 @@ export default function IndexPage(props) {
                 style={{ backgroundColor: '#23cba7' }}
             />
 
-            {/* <YouTube 
-                opts={{
-                    height: '500',
-                    width: '100%',
-                }}
-                videoId="6Af6b_wyiwI"
-                style={{ marginBottom: '64px' }}
-            /> */}
+            <div className="grid__col grid__col--3-of-5 grid__col--centered" style={{ marginBottom: '64px', marginTop: '40px', textAlign: 'center' }}>
+                <h2>Share the Data With Your Friends</h2>
+                <FacebookShareButton
+                    quote="Get the latest data count update on Covid-19"
+                    url="https://covid19.mofodox.now.sh"
+                    style={{ marginRight: '16px' }}
+                >
+                    <FacebookIcon
+                        size={40}
+                        borderRadius={8}
+                    />
+                </FacebookShareButton>
+
+                <TwitterShareButton 
+                    title="Get the latest data count update on Covid-19"
+                    url="https://covid19.mofodox.now.sh"
+                    via="mofodox"
+                    style={{ marginRight: '16px' }}
+                >
+                    <TwitterIcon 
+                        size={40}
+                        borderRadius={8}
+                    />
+
+                </TwitterShareButton>
+
+                <WhatsappShareButton
+                    url="https://covid19.mofodox.now.sh"
+                    title="Get the latest data count update on Covid-19"
+                >
+                    <WhatsappIcon 
+                        size={40}
+                        borderRadius={8}
+                    />
+                </WhatsappShareButton>
+            </div>
 
             <style jsx>{`
                 .title {
                     font-size: 40px;
                     text-align: center;
                     margin: 0 auto;
-                }
-
-                #circle {
-                    display: inline-block;
-                    position: relative;
-                    top: -30px;
-                    left: 48px;
-                    width: 16px;
-                    height: 16px;
-                    border-radius: 50%;
-                    background-color: orange;
                 }
 
                 #time--status {
