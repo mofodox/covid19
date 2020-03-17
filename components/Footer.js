@@ -11,8 +11,16 @@ export default function Footer(props) {
                     text-align: center;
                 }
 
-                .footer--text {
+                #footer--text {
                     margin-bottom: 16px;
+                }
+
+                #footer--text a, #footer--sourceText a {
+                    color: #59abe3;
+                }
+
+                #footer--text a:hover, #footer--sourceText a:hover {
+                    color: #296690;
                 }
             `}</style>
         </div>
