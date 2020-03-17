@@ -31,7 +31,9 @@ const IndexPage = (props) => {
                 <p id="time--status">{`Last updated on ${dateAllString}`}</p>
             </div>
 
-            <hr className="line" />
+            <div className="grid__col grid__col--12-of-12">
+                <hr className="line" />
+            </div>
 
             <InfoCard 
                 contentTitle="Confirmed:"
@@ -57,7 +59,9 @@ const IndexPage = (props) => {
                 <p id="time--status">{`Last updated on ${dateSGString}`}</p>
             </div>
 
-            <hr className="line" />
+            <div className="grid__col grid__col--12-of-12">
+                <hr className="line" />
+            </div>
 
             <InfoCard
                 contentTitle="Confirmed:"
