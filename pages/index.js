@@ -7,11 +7,13 @@ import {
     WhatsappShareButton,
     WhatsappIcon
 } from 'react-share'
+import Router from 'next/router'
+import withGA from 'next-ga'
 
 import Layout from '../components/Layout'
 import InfoCard from '../components/InfoCard'
 
-export default function IndexPage(props) {
+const IndexPage = (props) => {
     const { dataAll, dataSG } = props 
 
     let dateAll = new Date(dataAll.lastUpdate)
@@ -143,3 +145,5 @@ IndexPage.getInitialProps = async () => {
 
     return { dataAll, dataDaily, dataSG }
 }
+
+export default withGA('UA-160833862-1', Router)(IndexPage)
