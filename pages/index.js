@@ -43,19 +43,19 @@ const IndexPage = (props) => {
             <InfoCard 
                 contentTitle="Confirmed:"
                 subtitleValue={`${dataAll.confirmed.value}`}
-                style={{ backgroundColor: '#f7ca18' }}
+                style={{ color: '#f7ca18' }}
             />
 
             <InfoCard
                 contentTitle="Deaths:"
                 subtitleValue={`${dataAll.deaths.value}`}
-                style={{ backgroundColor: '#f64747' }}
+                style={{ color: '#f64747' }}
             />
 
             <InfoCard
                 contentTitle="Recovered:"
                 subtitleValue={`${dataAll.recovered.value}`}
-                style={{ backgroundColor: '#23cba7' }}
+                style={{ color: '#23cba7' }}
             />
 
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
@@ -70,22 +70,22 @@ const IndexPage = (props) => {
             <InfoCard
                 contentTitle="Confirmed:"
                 subtitleValue={`${dataSG.confirmed.value}`}
-                style={{ backgroundColor: '#f7ca18' }}
+                style={{ color: '#f7ca18' }}
             />
 
             <InfoCard
                 contentTitle="Deaths:"
                 subtitleValue={`${dataSG.deaths.value}`}
-                style={{ backgroundColor: '#f64747' }}
+                style={{ color: '#f64747' }}
             />
 
             <InfoCard
                 contentTitle="Recovered:"
                 subtitleValue={`${dataSG.recovered.value}`}
-                style={{ backgroundColor: '#23cba7' }}
+                style={{ color: '#23cba7' }}
             />
 
-            <div className="grid__col grid__col--3-of-5 grid__col--centered" style={{ marginBottom: '64px', marginTop: '40px', textAlign: 'center' }}>
+            <div className="grid__col grid__col--3-of-5 grid__col--centered share--fold">
                 <h2>Share the Data With Your Friends</h2>
                 <FacebookShareButton
                     quote={`Latest update on SG Covid-19 data – Confirmed: ${dataSG.confirmed.value} Deaths: ${dataSG.deaths.value} Recovered: ${dataSG.recovered.value}`}
@@ -127,10 +127,30 @@ const IndexPage = (props) => {
                     font-size: 40px;
                     text-align: center;
                     margin: 0 auto;
+                    color: #444;
                 }
 
                 #time--status {
                     text-align: center;
+                    color: #696969;
+                }
+
+                .share--fold {
+                    // background-color: grey;
+                    margin-bottom: 40px;
+                    margin-top: 40px;
+                    text-align: center;
+                }
+
+                // Extra small devices (portrait phones, less than 576px)
+                @media (max-width: 575.98px) {
+                    .title {
+                        font-size: 32px;
+                    }
+
+                    #time--status {
+                        font-size: 15px;
+                    }
                 }
             `}</style>
         </Layout>
