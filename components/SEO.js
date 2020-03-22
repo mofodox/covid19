@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-export default function SEO() {
+export default function SEO(props) {
     return (
         <Head>
-            <title>CORONA</title>
+            <title>CORONA | {props.pageTitle}</title>
             <meta charSet="UTF-8" />
             <meta name="description" content="Corona Virus Global Cases" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />

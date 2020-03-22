@@ -1,10 +1,12 @@
 import SEO from './SEO'
 import Footer from './Footer'
 
-export default function Layout({children, dataURL}) {
+export default function Layout({children, dataURL, pageTitle}) {
     return (
         <React.Fragment>
-            <SEO />
+            <SEO 
+                pageTitle={pageTitle}
+            />
             <div className="wrap">
                 <div className="grid">
                     {children}

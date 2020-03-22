@@ -14,7 +14,11 @@ import Layout from '../components/Layout'
 import InfoCard from '../components/InfoCard'
 
 const IndexPage = (props) => {
-    const { dataAll, dataSG } = props 
+    const { dataAll, dataSG, dataCountries } = props
+    
+    // const countryVals = Object.values(dataCountries.countries)
+    // console.log(dataCountries.countries.Singapore)
+    // console.log(countryVals)
 
     let dateAll = new Date(dataAll.lastUpdate)
     let dateAllString = dateAll.toDateString()
@@ -24,6 +28,7 @@ const IndexPage = (props) => {
 
     return (
         <Layout
+            pageTitle="Home"
             dataURL={dataAll.source}
         >
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
@@ -54,8 +59,7 @@ const IndexPage = (props) => {
             />
 
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
-                <h1 className="title">Covid-19 SG Cases 🇸🇬</h1>
-                {/* <div id="circle"></div> */}
+                <h1 className="title">{`Covid-19 ${dataCountries.countries.Singapore} Cases 🇸🇬`}</h1>
                 <p id="time--status">{`Last updated on ${dateSGString}`}</p>
             </div>
 
@@ -84,7 +88,7 @@ const IndexPage = (props) => {
             <div className="grid__col grid__col--3-of-5 grid__col--centered" style={{ marginBottom: '64px', marginTop: '40px', textAlign: 'center' }}>
                 <h2>Share the Data With Your Friends</h2>
                 <FacebookShareButton
-                    quote="Get the latest data count update on Covid-19"
+                    quote={`Latest update on SG Covid-19 data – Confirmed: ${dataSG.confirmed.value} Deaths: ${dataSG.deaths.value} Recovered: ${dataSG.recovered.value}`}
                     url="https://covid19.mofodox.now.sh"
                     style={{ marginRight: '16px' }}
                 >
@@ -95,7 +99,7 @@ const IndexPage = (props) => {
                 </FacebookShareButton>
 
                 <TwitterShareButton 
-                    title="Get the latest data count update on Covid-19"
+                    title={`Latest update on SG Covid-19 data – Confirmed: ${dataSG.confirmed.value} Deaths: ${dataSG.deaths.value} Recovered: ${dataSG.recovered.value}`}
                     url="https://covid19.mofodox.now.sh"
                     via="mofodox"
                     style={{ marginRight: '16px' }}
@@ -109,7 +113,7 @@ const IndexPage = (props) => {
 
                 <WhatsappShareButton
                     url="https://covid19.mofodox.now.sh"
-                    title="Get the latest data count update on Covid-19"
+                    title={`Latest update on SG Covid-19 data – Confirmed: ${dataSG.confirmed.value} Deaths: ${dataSG.deaths.value} Recovered: ${dataSG.recovered.value}`}
                 >
                     <WhatsappIcon 
                         size={40}
@@ -143,11 +147,15 @@ IndexPage.getInitialProps = async () => {
     const resSG = await fetch('https://covid19.mathdro.id/api/countries/SG')
     const dataSG = await resSG.json()
 
-    console.log(dataAll)
-    console.log(dataDaily)
-    console.log(dataSG)
+    const resCountries = await fetch('https://covid19.mathdro.id/api/countries')
+    const dataCountries = await resCountries.json()
 
-    return { dataAll, dataDaily, dataSG }
+    // console.log(dataAll)
+    // console.log(dataDaily)
+    // console.log('dataSG', dataSG)
+    // console.log('countries', dataCountries)
+
+    return { dataAll, dataDaily, dataSG, dataCountries }
 }
 
 export default withGA('UA-160833862-1', Router)(IndexPage)
