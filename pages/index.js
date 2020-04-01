@@ -32,7 +32,7 @@ const IndexPage = (props) => {
             dataURL={dataAll.source}
         >
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
-                <h1 className="title">Covid-19 Global Cases 🌍</h1>
+                <h1 className="title">Covid-19 – Global Cases 🌍</h1>
                 <p id="time--status">{`Last updated on ${dateAllString}`}</p>
             </div>
 
@@ -59,7 +59,7 @@ const IndexPage = (props) => {
             />
 
             <div className="grid__col grid__col--3-of-5 grid__col--centered">
-                <h1 className="title">{`Covid-19 ${dataCountries.countries.Singapore} Cases 🇸🇬`}</h1>
+                <h1 className="title">{`Covid-19 – SG Cases 🇸🇬`}</h1>
                 <p id="time--status">{`Last updated on ${dateSGString}`}</p>
             </div>
 
