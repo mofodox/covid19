@@ -1,1 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+.content-subtitle {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #e4e4e4;
+    border-radius: 4px;
+}

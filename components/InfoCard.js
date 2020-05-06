@@ -5,14 +5,19 @@ const InfoCard = (props) => {
         <div className="grid__col grid__col--1-of-3" style={{ marginBottom: '64px' }}>
             <div className="container">
                 <p className="content-title">{`${props.contentTitle}`}</p>
-                <p className="content-subtitle" style={props.style}>
-                    <TextyAnim
-                        mode="smooth"
-                        delay={props.delay}
-                    >
-                        {`${props.subtitleValue}`}
-                    </TextyAnim>
-                </p>
+                <TextyAnim
+                    className="content-subtitle"
+                    style={props.style}
+                    mode="smooth"
+                    delay={props.delay}
+                >
+                    {`${props.subtitleValue}`}
+                    {/* <p className="content-subtitle" style={props.style}>
+                        
+                            
+                        
+                    </p> */}
+                </TextyAnim>
             </div>
 
             <style jsx>{`

@@ -9,12 +9,28 @@ import {
 } from 'react-share'
 import Router from 'next/router'
 import withGA from 'next-ga'
+import {
+    ResponsiveContainer,
+    LineChart,
+    BarChart,
+    AreaChart,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Legend,
+    Line,
+    Bar,
+    Area
+} from 'recharts'
 
 import Layout from '../components/Layout'
 import InfoCard from '../components/InfoCard'
 
 const IndexPage = (props) => {
-    const { dataAll, dataSG, dataCountries } = props
+    const { dataAll, dataSG } = props
+
+    console.log(props.dataLiveSG)
     
     // const countryVals = Object.values(dataCountries.countries)
     // console.log(dataCountries.countries.Singapore)
@@ -90,6 +106,55 @@ const IndexPage = (props) => {
                 delay={3000}
                 style={{ color: '#23cba7' }}
             />
+            <ResponsiveContainer width="100%" height={500}>
+                <AreaChart
+                     data={props.dataLiveSG}
+                    margin={{ top: 16, right: 16, left: 16, bottom: 16 }}>
+                    <defs>
+                        <linearGradient id="colorConfirmed" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#f7ca18" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#f7ca18" stopOpacity={0} />
+                        </linearGradient>
+                        <linearGradient id="colorDeaths" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#f64747" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#f64747" stopOpacity={0} />
+                        </linearGradient>
+                        <linearGradient id="colorRecovered" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#23cba7" stopOpacity={0.8} />
+                            <stop offset="95%" stopColor="#23cba7" stopOpacity={0} />
+                        </linearGradient>
+                    </defs>
+                    <XAxis dataKey='Date' />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="20 20 20" />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="Confirmed" stroke="#f7ca18" fillOpacity={1} fill="url(#colorConfirmed)" />
+                    <Area type="monotone" dataKey="Deaths" stroke="#f64747" fillOpacity={1} fill="url(#colorDeaths)" />
+                    <Area type="monotone" dataKey="Recovered" stroke="#23cba7" fillOpacity={1} fill="url(#colorRecovered)" />
+                </AreaChart>
+            </ResponsiveContainer>
+
+            {/* <BarChart width={730} height={250} data={ props.dataLiveSG }>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="Date" />
+                <YAxis dataKey="Active" hide={false} />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="Confirmed" fill="#8884d8" />
+                <Bar dataKey="Deaths" fill="#82ca9d" />
+                <Bar dataKey="Recovered" fill="#82ca9d" />
+            </BarChart> */}
+
+            {/* <LineChart width={1000} height={500} data={props.dataLiveSG}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="Date" />
+                <YAxis dataKey="Active" />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="Confirmed" stroke="#8884d8" />
+                <Line type="monotone" dataKey="Deaths" stroke="#82ca9d" />
+                <Line type="monotone" dataKey="Recovered" stroke="#82ca9d" />
+            </LineChart> */}
 
             <div className="grid__col grid__col--3-of-5 grid__col--centered share--fold">
                 <h2>Share the Data With Your Friends</h2>
@@ -167,21 +232,22 @@ IndexPage.getInitialProps = async () => {
     const resAll = await fetch('https://covid19.mathdro.id/api')
     const dataAll = await resAll.json()
 
-    const resDaily = await fetch('https://covid19.mathdro.id/api/daily')
+    const resDaily = await fetch('https://covid19.mathdro.id/api/confirmed')
     const dataDaily = await resDaily.json()
 
     const resSG = await fetch('https://covid19.mathdro.id/api/countries/SG')
     const dataSG = await resSG.json()
 
-    const resCountries = await fetch('https://covid19.mathdro.id/api/countries')
-    const dataCountries = await resCountries.json()
+    const resLiveSG = await fetch('https://api.covid19api.com/live/country/SG')
+    const dataLiveSG = await resLiveSG.json()
 
     // console.log(dataAll)
-    // console.log(dataDaily)
+    console.log(dataDaily)
+    console.log(dataLiveSG)
     // console.log('dataSG', dataSG)
     // console.log('countries', dataCountries)
 
-    return { dataAll, dataDaily, dataSG, dataCountries }
+    return { dataAll, dataDaily, dataSG, dataLiveSG }
 }
 
 export default withGA('UA-160833862-1', Router)(IndexPage)
