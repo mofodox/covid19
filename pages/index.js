@@ -43,18 +43,21 @@ const IndexPage = (props) => {
             <InfoCard 
                 contentTitle="Confirmed:"
                 subtitleValue={`${dataAll.confirmed.value}`}
+                delay={500}
                 style={{ color: '#f7ca18' }}
             />
 
             <InfoCard
                 contentTitle="Deaths:"
                 subtitleValue={`${dataAll.deaths.value}`}
+                delay={1000}
                 style={{ color: '#f64747' }}
             />
 
             <InfoCard
                 contentTitle="Recovered:"
                 subtitleValue={`${dataAll.recovered.value}`}
+                delay={1500}
                 style={{ color: '#23cba7' }}
             />
 
@@ -70,18 +73,21 @@ const IndexPage = (props) => {
             <InfoCard
                 contentTitle="Confirmed:"
                 subtitleValue={`${dataSG.confirmed.value}`}
+                delay={2000}
                 style={{ color: '#f7ca18' }}
             />
 
             <InfoCard
                 contentTitle="Deaths:"
                 subtitleValue={`${dataSG.deaths.value}`}
+                delay={2500}
                 style={{ color: '#f64747' }}
             />
 
             <InfoCard
                 contentTitle="Recovered:"
                 subtitleValue={`${dataSG.recovered.value}`}
+                delay={3000}
                 style={{ color: '#23cba7' }}
             />
 
