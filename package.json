@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "next": "^9.3.0",
     "next-ga": "^2.3.4",
     "rc-texty": "^0.2.0",
